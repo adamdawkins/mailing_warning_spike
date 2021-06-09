@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  amount_in_cents: 1
+  due_at: 2021-06-09 19:07:40
+  status: MyString
+
+two:
+  client: two
+  amount_in_cents: 1
+  due_at: 2021-06-09 19:07:40
+  status: MyString

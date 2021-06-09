@@ -1,0 +1,29 @@
+<h1>
+  New Mailing for <%= @client.name %>
+</h1>
+
+<%= turbo_stream_from @client, :new_mailing %>
+
+<%= turbo_frame_tag :new_mailing_notice do %>
+  <p>Notice here</p>
+<% end %>
+
+<%= form_with model: [:client, @mailing] do |form| %>
+  <div>
+    <%= form.label :to %>
+  <%= form.text_field :to %>
+  </div>
+
+  <table style="margin: 2em 0 ;">
+  <% @client.invoices.approved.each do |invoice| %>
+  <tr>
+    <td><input type="checkbox"></td>
+    <td><%= invoice.id %></td>
+    <td>Due: <%= invoice.due_at %></td>
+    <td><%= number_to_currency(invoice.amount_in_cents / 100.to_f) %></td>
+    <td><%= link_to "Refresh", "#" %></td>
+  </tr>
+  <% end %>
+  </table>
+  <%= form.submit %>
+<% end %>
